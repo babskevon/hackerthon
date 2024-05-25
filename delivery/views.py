@@ -36,6 +36,17 @@ class PickPoint(View):
         }
         return render(request, "pick.html", data)
     
+    def post(self, request):
+        form = PickForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse("index"))
+        else:
+            data = {
+                "form":form
+            }
+            return render(request, "pick.html", data)
+    
 
 
 class Deliver(View):

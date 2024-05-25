@@ -49,11 +49,11 @@ class Message(models.Model):
 
 
 class Pick(models.Model):
-    order_no = models.CharField(max_length=255, null=True)
+    # order_no = models.CharField(max_length=255, null=True)
     region = models.CharField(max_length=255, choices=regions)
     city = models.CharField(max_length=255, choices=cities)
     village = models.CharField(max_length=255, choices=villages, null=True)
     street = models.CharField(max_length=255, choices=streets)
-    agent = models.ForeignKey(Agent, on_delete=models.CASCADE)
+    agent = models.ForeignKey(Agent, on_delete=models.SET_NULL, null=True)
 
 
